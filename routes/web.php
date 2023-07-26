@@ -23,10 +23,14 @@ Route::match(['get', 'post'],'/user/list', [UserController::class, 'list'])->nam
 Route::get('/user/listTrashed', [UserController::class, 'listTrashed'])->name('user.listTrashed');
 Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
 Route::patch('/user/update/{id}', [UserController::class, 'update'])->name('user.update');
-Route::get('/user/viewAdd', [UserController::class, 'viewAdd'])->name('user.viewAdd');
+
 Route::post('/user/add', [UserController::class, 'addNew'])->name('user.add');
 Route::get('/user/delete/{id}', [UserController::class, 'delete'])->name('user.delete');
 Route::get('/user/restore/{id}', [UserController::class, 'restore'])->name('user.restore');
 Route::get('/user/forceDelete/{id}', [UserController::class, 'forceDelete'])->name('user.forceDelete');
 Route::get('/user/detail/{id}', [UserController::class, 'detail'])->name('user.detail');
 Route::match(['get', 'patch'],'/user/changePassword/{id}', [UserController::class, 'changePassowrd'])->name('user.changePassword');
+Route::group(['prefix' => 'laravel-filemanager'], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+    Route::get('/user/viewAdd', [UserController::class, 'viewAdd'])->name('user.viewAdd');
+});

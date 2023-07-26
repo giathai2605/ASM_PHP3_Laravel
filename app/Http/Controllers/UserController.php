@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\Storage;
 
 
 class UserController extends Controller
@@ -89,7 +90,7 @@ class UserController extends Controller
             // Nếu không tìm thấy khách hàng, xử lý lỗi tại đây (ví dụ: hiển thị thông báo lỗi)
             session()->flash('error', 'Không tìm thấy khách hàng');
             return redirect()->route('user.list');
-        }
+        }   
 
         $this->user= User::find($id);
         $data = $request->except(['_token']);    
@@ -105,7 +106,7 @@ class UserController extends Controller
         }
 
         if($request->hasFile('avatar') && $request->file('avatar')->isValid()){
-            // unlink($request->avatar);
+            Storage::delete('public/'.$this->user->avatar);
             $data['avatar'] = uploadFile('uploads/avatar',$request->file('avatar'));
             // dd($data['avatar']);
         }
