@@ -18,11 +18,12 @@ return new class extends Migration
             $table->string('fullname');
             $table->string('username')->unique();
             $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('phone')->unique();
             $table->string('password');
-            $table ->tinyInteger('gender');
-            $table -> date('birthday');
-            $table -> string('address')->nullable();
+            $table->tinyInteger('gender');
+            $table-> date('birthday');
+            $table-> string('address')->nullable();
             $table->string('avatar')->nullable();
             $table->integer('role_id')->default(1);
             $table->timestamps();

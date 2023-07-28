@@ -24,13 +24,7 @@
             <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
-        <div class="col-md-6">
-            <label for="inputPassword4" class="form-label">Password</label>
-            <input type="password" name="password"  class="form-control" id="inputPassword4" value="{{$user->password}}" placeholder="********">
-            @error('password')
-            <div class="text-danger">{{ $message }}</div>
-            @enderror
-        </div>
+        
         <div class="col-md-6">
             <label for="inputEmail4" class="form-label">Email</label>
             <input type="email" name="email" class="form-control" id="inputEmail4" value="{{$user->email}}" placeholder="Your Email">
@@ -45,7 +39,7 @@
             <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
-        <div class="col-12">
+        <div class="col-6">
             <label for="inputAddress2" class="form-label">Address </label>
             <input type="text" name="address" class="form-control" id="inputAddress2" value="{{$user->address}}" placeholder="Apartment, studio, or floor">
             @error('address')
@@ -98,7 +92,7 @@
             <div class="row">
                <div class="col-md-8">
                 <label for="inputState" class="form-label">Avatar</label>
-                <input type="file" name="avatar" value="{{$user->avatar}}" id="avatar" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
+                <input type="file" name="avatar" accept="image/*" value="{{$user->avatar}}" id="avatar" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
                </div>
                <div class="col-md-4 ">
                 <img width="100" height="100%" src="{{$user->avatar?Storage::url($user->avatar):"https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg"}}" alt="" class="img-fluid avatar-lg" id="image_preview">

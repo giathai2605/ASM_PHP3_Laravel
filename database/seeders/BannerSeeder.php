@@ -17,29 +17,40 @@ class BannerSeeder extends Seeder
     {
         //tạo 5 dữ liệu mẫu
         DB::table('banners')->insert([
+            
             [
                 'title' => 'Banner 1',
-                'link' => 'https://www.facebook.com',
+                'image' => 'banner1.jpg',
+                'description' => 'Banner 1',
+                'link' => 'banner1',
                 'status' => 1,
             ],
             [
                 'title' => 'Banner 2',
-                'link' => 'https://www.facebook.com',
+                'image' => 'banner2.jpg',
+                'description' => 'Banner 2',
+                'link' => 'banner2',
                 'status' => 1,
             ],
             [
                 'title' => 'Banner 3',
-                'link' => 'https://www.facebook.com',
+                'image' => 'banner3.jpg',
+                'description' => 'Banner 3',
+                'link' => 'banner3',
                 'status' => 1,
             ],
             [
                 'title' => 'Banner 4',
-                'link' => 'https://www.facebook.com',
+                'image' => 'banner4.jpg',
+                'description' => 'Banner 4',
+                'link' => 'banner4',
                 'status' => 1,
             ],
             [
                 'title' => 'Banner 5',
-                'link' => 'https://www.facebook.com',
+                'image' => 'banner5.jpg',
+                'description' => 'Banner 5',
+                'link' => 'banner5',
                 'status' => 1,
             ],
         ]);

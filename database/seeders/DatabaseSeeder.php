@@ -23,10 +23,8 @@ class DatabaseSeeder extends Seeder
             PropertySeeder::class,
             PropertyImageSeeder::class,
             PostSeeder::class,
-            PostImageSeeder::class,
             CommentSeeder::class,
             PostCategorySeeder::class,
-            BannerImageSeeder::class,
             BannerSeeder::class,
 
         ]);

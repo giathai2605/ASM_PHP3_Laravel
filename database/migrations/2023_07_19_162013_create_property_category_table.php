@@ -15,9 +15,11 @@ return new class extends Migration
     {
         Schema::create('property_category', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('image')->nullable();
+            $table->string('description')->nullable();
             $table->timestamps();
+            $table->softDeletes(); // Thêm cột deleted_at
         });
     }
 

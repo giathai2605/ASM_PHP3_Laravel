@@ -3,19 +3,33 @@
     <div class="table-responsive mt-5 mx-3">
         <div class="d-flex justify-content-between mt-2">
             <div>
-               <a href="{{route('user.list')}}"> <h2   class="mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="feather feather-list">
-                        <line x1="8" y1="6" x2="21" y2="6"></line>
-                        <line x1="8" y1="12" x2="21" y2="12"></line>
-                        <line x1="8" y1="18" x2="21" y2="18"></line>
-                        <line x1="3" y1="6" x2="3.01" y2="6"></line>
-                        <line x1="3" y1="12" x2="3.01" y2="12"></line>
-                        <line x1="3" y1="18" x2="3.01" y2="18"></line>
-                    </svg>List User</h2></a>
+                <a href="{{ route('user.list') }}">
+                    <h2 class="mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-list">
+                            <line x1="8" y1="6" x2="21" y2="6"></line>
+                            <line x1="8" y1="12" x2="21" y2="12"></line>
+                            <line x1="8" y1="18" x2="21" y2="18"></line>
+                            <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                            <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                            <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                        </svg><span class="mx-1">List User</span></h2>
+                </a>
             </div>
             <div>
-                <a class="btn btn-primary" href="{{ route('user.listTrashed') }}">Đã xóa</a>
+                <a class="btn btn-primary" href="{{ route('user.listTrashed') }}">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-trash-2">
+                        <polyline points="3 6 5 6 21 6"></polyline>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                        </path>
+                        <line x1="10" y1="11" x2="10" y2="17"></line>
+                        <line x1="14" y1="11" x2="14" y2="17"></line>
+                    </svg>
+                    <span class="mx-1 fs-6 ">Tài khoản đã xóa</span>
+                </a>
             </div>
         </div>
         @if (Session::has('success'))
@@ -72,8 +86,9 @@
 
                         <td class="text-center">
                             <div class="action-btns">
-                                <a href="{{route('user.detail',['id'=>$user->id])}}" class="action-btn btn-view bs-tooltip me-2"
-                                    data-toggle="tooltip" data-placement="top" title="View">
+                                <a href="{{ route('user.detail', ['id' => $user->id]) }}"
+                                    class="action-btn btn-view bs-tooltip me-2" data-toggle="tooltip"
+                                    data-placement="top" title="View">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                         stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye">
@@ -90,7 +105,8 @@
                                         <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
                                     </svg>
                                 </a>
-                                <a href="{{ route('user.delete', ['id' => $user->id]) }}" onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"
+                                <a href="{{ route('user.delete', ['id' => $user->id]) }}"
+                                    onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"
                                     class="action-btn btn-delete bs-tooltip" data-toggle="tooltip" data-placement="top"
                                     title="Delete">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -113,6 +129,6 @@
         <div class="d-flex justify-content-center">
             {{ $users->appends(request()->except(['_token']))->links() }}
         </div>
-        
+
     </div>
 @endsection

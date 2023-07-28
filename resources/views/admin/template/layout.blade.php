@@ -41,6 +41,9 @@
     <link rel="stylesheet" href="{{ asset('build/assets/list-group.40423aa1.css') }}" />
     <link rel="preload" as="style" href="{{ asset('build/assets/modules-widgets.438cac09.css') }}" />
     <link rel="stylesheet" href="{{ asset('build/assets/modules-widgets.438cac09.css') }}" />
+    {{-- Link tinyMCE5 --}}
+    <script src="https://cdn.tiny.cloud/1/51ie93gdn5up70hsd390vgtxtj7bur6hlufwsv2flk89y6mo/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
     <!--  END CUSTOM STYLE FILE  -->
     <title>{{$title}}</title>
 </head>
@@ -82,24 +85,6 @@
     <script src="{{ asset('upload_file/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('upload_file/jquery/input-mask/jquery.inputmask.min.js') }}"></script>
     <script src="{{ asset('upload_file/jquery/input-mask/jquery.imputmask.date.extension.js') }}"></script>
-    <script>
-        $(function() {
-            function readURL(input, selector) {
-                if (input.files && input.files[0]) {
-                    let reader = new FileReader();
-
-                    reader.onload = function(e) {
-                        $(selector).attr('src', e.target.result);
-                    };
-
-                    reader.readAsDataURL(input.files[0]);
-                }
-            }
-            $("#avatar").change(function() {
-                readURL(this, '#image_preview');
-            });
-
-        });
-    </script>
+    <script src="{{asset('js/imagePreview.js')}}"></script>
 
 </html>
