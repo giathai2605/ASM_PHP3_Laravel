@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon;
 
 
 class UserController extends Controller
@@ -29,7 +30,7 @@ class UserController extends Controller
         return redirect()->route('login'); // Điều hướng về trang chủ hoặc bất kỳ trang nào bạn muốn sau khi logout
     }
 
-    public function login(Request $request)
+    public function login(UserRequest $request)
     {
         $title = 'Đăng nhập';
         if ($request->isMethod('POST')) {
@@ -47,6 +48,24 @@ class UserController extends Controller
         }
         // dd(123);
         return view('auth.login', compact(['title']));
+    }
+
+    public function register(UserRequest $request){
+        $title = 'Đăng ký';
+        if($request->isMethod('POST')){
+            $data = $request->except(['_token', 'confirm_password']);
+            $data['password'] = Hash::make($request->password);
+            $data['email_verified_at'] = Carbon::now('Asia/Ho_Chi_Minh');
+            $user = User::create($data);
+            if($user){
+                session::flash('success', 'Đăng ký thành công');
+                return redirect()->route('login');
+            }else{
+                session::flash('error', 'Đăng ký thất bại');
+                return redirect()->route('register');
+            }
+        }
+        return view('auth.register', compact(['title']));
     }
 
     public function list(Request $request)

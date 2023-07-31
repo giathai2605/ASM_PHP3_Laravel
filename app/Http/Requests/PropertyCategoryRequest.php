@@ -32,7 +32,7 @@ class PropertyCategoryRequest extends FormRequest
                   // dd($this->avatar);
                     $ruler = [
                         'name' => 'required|unique:property_category,name',
-                        'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                        'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
                         'description' => 'max:255',
                     ];
                   break;
@@ -75,7 +75,7 @@ class PropertyCategoryRequest extends FormRequest
             'image.required' => 'Ảnh loại bất động sản không được để trống',
             'image.image' => 'Ảnh loại bất động sản không đúng định dạng',
             'image.mimes' => 'Ảnh loại bất động sản phải thuộc các định dạng sau: jpeg,png,jpg,gif,svg',
-            'image.max' => 'Ảnh loại bất động sản không được vượt quá 2048kb',
+            'image.max' => 'Ảnh loại bất động sản không được vượt quá 10MB',
             'description.max' => 'Mô tả loại bất động sản không được vượt quá 255 ký tự',
   
         

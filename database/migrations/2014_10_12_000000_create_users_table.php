@@ -22,10 +22,11 @@ return new class extends Migration
             $table->string('phone')->unique();
             $table->string('password');
             $table->tinyInteger('gender');
-            $table-> date('birthday');
+            $table-> date('birthday')->nullable();
             $table-> string('address')->nullable();
             $table->string('avatar')->nullable();
-            $table->integer('role_id')->default(1);
+            $table->integer('role_id')->default(2);
+            $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
         });

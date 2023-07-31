@@ -39,11 +39,30 @@ class UserRequest extends FormRequest
                       'gender'=>'required|numeric|max:1',
                       'birthday'=>'required|date|before:today',
                       'address'=>'required',
-                      'avatar'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                      'avatar'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
                       'role_id'=>'required',
 
                   ];
                 break;
+
+                case 'login':
+                  $ruler = [
+                      'username'=>'required|max:50',
+                      'password'=>'required|min:6|max:50',
+                  ];
+                  break;
+
+                case 'register':
+                  $ruler = [ 'fullname'=>'required|min:10',
+                      'email'=>'required|email|unique:users,email',
+                      'username'=>'required|min:6|max:50|unique:users,username',
+                      'password'=>'required|min:6|max:20',
+                      'phone'=>'required|regex:/^[0-9]+$/|max:10|unique:users,phone',
+                      'birthday'=>'required|date|before:today',
+                      'gender'=>'required|numeric|max:1',
+                      'confirm_password'=>'required|same:password',
+                ];
+                  break;
                
                 
               default:
@@ -112,7 +131,7 @@ class UserRequest extends FormRequest
         'avatar.required' => 'Bắt buộc nhập ảnh đại diện',
         'avatar.image' => 'Ảnh đại diện không đúng định dạng',
         'avatar.mimes' => 'Ảnh đại diện phải là định dạng: jpeg,png,jpg,gif,svg',
-        'avatar.max' => 'Ảnh đại diện không được quá 2048kb',
+        'avatar.max' => 'Ảnh đại diện không được quá 10MB',
         'role_id.required' => 'Bắt buộc chọn vai trò',
         'current_password.required' => 'Bắt buộc nhập mật khẩu cũ',
         'current_password.min' => 'Mật khẩu phải có ít nhất 6 ký tự',

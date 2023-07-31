@@ -64,9 +64,9 @@
                     <li class="active">
                         <a href="{{ route('user.list') }}"> Người dùng </a>
                     </li>
-                    {{-- <li>
+                    <li>
                         <a href="{{ route('role.list') }}"> Vai trò </a>
-                    </li> --}}
+                    </li>
                     {{-- <li>
                         <a href="{{ route('property.list') }}"> Bất động sản </a>
                     </li> --}}

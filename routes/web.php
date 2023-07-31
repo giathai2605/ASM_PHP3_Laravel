@@ -23,14 +23,18 @@ use App\Http\Controllers\PostCategoryController;
 
 // Login
 Route::match(['get','post'],'/login', [UserController::class, 'login'])->name('login');
+// Register
+Route::match(['get','post'],'/register', [UserController::class, 'register'])->name('register');
 
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/', function () {
         return view('welcome');
     });
-// Route for user
-Route::match(['get', 'post'],'/user/list', [UserController::class, 'list'])->name('user.list');
+    Route::match(['get', 'post'],'/user/list', [UserController::class, 'list'])->name('user.list');
+
+Route::middleware(['check.role'])->group(function(){
+    // Route for user
 Route::get('/user/listTrashed', [UserController::class, 'listTrashed'])->name('user.listTrashed');
 Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
 Route::patch('/user/update/{id}', [UserController::class, 'update'])->name('user.update');
@@ -64,6 +68,17 @@ Route::match(['get', 'post'],'/postCategory/add', [PostCategoryController::class
 Route::get('/postCategory/delete/{id}', [PostCategoryController::class, 'delete'])->name('postCategory.delete');
 Route::get('/postCategory/restore/{id}', [PostCategoryController::class, 'restore'])->name('postCategory.restore');
 Route::get('/postCategory/forceDelete/{id}', [PostCategoryController::class, 'forceDelete'])->name('postCategory.forceDelete');
+
+// Route Role
+Route::match(['get', 'post'],'/role/list', [RoleController::class, 'list'])->name('role.list');
+Route::match(['get', 'post'],'/role/listTrashed', [RoleController::class, 'listTrashed'])->name('role.listTrashed');
+Route::match(['get', 'patch'],'/role/edit/{id}', [RoleController::class, 'edit'])->name('role.edit');
+Route::match(['get', 'post'],'/role/add', [RoleController::class, 'add'])->name('role.add');
+Route::get('/role/delete/{id}', [RoleController::class, 'delete'])->name('role.delete');
+Route::get('/role/restore/{id}', [RoleController::class, 'restore'])->name('role.restore');
+Route::get('/role/forceDelete/{id}', [RoleController::class, 'forceDelete'])->name('role.forceDelete');
+
+});
 
 // Route Logout
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');

@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('image');
-            $table->string('description');
-            $table->string('link');
-            $table->tinyInteger('status')->default(1);
+            $table->string('description')->nullable();
+            $table->string('link')->nullable();
+            $table->tinyInteger('status')->nullable()->default(1);
             $table->timestamps();
             $table->softDeletes();
         });
