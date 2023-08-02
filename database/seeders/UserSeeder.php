@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
                 'gender' => 1,
                 'birthday' => '2003-05-26',
                 'address' => 'Hà Nội',
-                'role_id' => 2,
+                'role_id' => 1,
             ],
             [
                 'fullname' => 'Lê Công Tiến',

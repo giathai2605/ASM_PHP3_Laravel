@@ -79,10 +79,10 @@
                     <li>
                         <a href="{{ route('propertyCategory.list') }}"> Danh mục bất động sản </a>
                     </li>
-                    {{-- <li>
+                    <li>
                         <a href="{{ route('post.list') }}"> Bài viết </a>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a href="{{ route('comment.list') }}"> Bình luận </a>
                     </li> --}}
                 </ul>

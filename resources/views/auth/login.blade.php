@@ -12,8 +12,9 @@
     <i class="fa fa-check" aria-hidden="true"></i>{{ Session::get('error') }}
 </p>
 @endif
-
-    <form action="{{route('login')}}" method="POST">
+<div class="col-md-6 mx-auto">
+    <h2 class="mt-3 ">Đăng nhập</h2>
+    <form action="{{route('login')}}" method="POST" class="mb-2" >
         @csrf
             <div class="mb-4" style="width: 400px;">
                 <label for="exampleInputEmail1" class="form-label">User Name</label>
@@ -31,5 +32,7 @@
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-    <p>Đăng ký tài khoản mới?<a href="{{route('register')}}">Đăng ký</a></p>
+    <p>Đăng ký tài khoản mới?<a class="text-primary" href="{{route('register')}}">Đăng ký</a></p>
+</div>
+    
 @endsection

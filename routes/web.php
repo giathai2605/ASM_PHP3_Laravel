@@ -7,6 +7,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PropertyCategoryController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\PostCategoryController;
+use App\Http\Controllers\PostController;
 
 
 /*
@@ -77,6 +78,17 @@ Route::match(['get', 'post'],'/role/add', [RoleController::class, 'add'])->name(
 Route::get('/role/delete/{id}', [RoleController::class, 'delete'])->name('role.delete');
 Route::get('/role/restore/{id}', [RoleController::class, 'restore'])->name('role.restore');
 Route::get('/role/forceDelete/{id}', [RoleController::class, 'forceDelete'])->name('role.forceDelete');
+
+// Route Post
+Route::match(['get', 'post'],'/post/list', [PostController::class, 'list'])->name('post.list');
+Route::match(['get', 'post'],'/post/listTrashed', [PostController::class, 'listTrashed'])->name('post.listTrashed');
+Route::match(['get', 'patch'],'/post/edit/{id}', [PostController::class, 'edit'])->name('post.edit');
+Route::match(['get', 'post'],'/post/add', [PostController::class, 'add'])->name('post.add');
+Route::get('/post/detail/{id}', [PostController::class, 'detail'])->name('post.detail');
+Route::get('/post/delete/{id}', [PostController::class, 'delete'])->name('post.delete');
+Route::get('/post/restore/{id}', [PostController::class, 'restore'])->name('post.restore');
+Route::get('/post/forceDelete/{id}', [PostController::class, 'forceDelete'])->name('post.forceDelete');
+
 
 });
 

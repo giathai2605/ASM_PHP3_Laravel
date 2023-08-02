@@ -114,8 +114,5 @@
         </div>
     </form>
 
-<textarea name="content" id="my-editor" class="form-control "></textarea>
-<script src="{{asset('js/app.js')}}">
 
-</script>
 @endsection
