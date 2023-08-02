@@ -128,47 +128,44 @@ class UserController extends Controller
 
     public function edit($id)
     {
+       
+    }
+
+    public function update($id,UserRequest $request)
+    {
         $title = 'Cập nhật người dùng';
         $user = User::find($id);
         $roles = Role::all();
-        return view('admin.user.edit', compact(['title', 'user', 'roles']));
-    }
-
-    public function update(UserRequest $request, $id)
-    {
-        if (!$this->user) {
+       if($request->isMethod('PATCH')){
+        if (!$user) {
             // Nếu không tìm thấy khách hàng, xử lý lỗi tại đây (ví dụ: hiển thị thông báo lỗi)
             session()->flash('error', 'Không tìm thấy khách hàng');
             return redirect()->route('user.list');
         }
-
-        $this->user = User::find($id);
-        $data = $request->except(['_token','password']);
-
+        // dd(123);
+        $data = $request->except(['_token']);
+        // dd($data);
         if ($request->hasFile('avatar') && $request->file('avatar')->isValid()) {
-            if($this->user->avatar){
-                Storage::delete('public/' . $this->user->avatar);
+            if($user->avatar){
+                Storage::delete('public/' . $user->avatar);
             }
             $data['avatar'] = uploadFile('uploads/avatar', $request->file('avatar'));
             // dd($data['avatar']);
         }
-        // dd($data['avatar']);
-        // Kiểm tra xem có mật khẩu mới được nhập hay không
+      
+        $user->fill($data);
+        $user->update();
 
 
-        // dd($data['avatar']);
-        // Cập nhật thông tin của khách hàng dựa vào dữ liệu mới
-        $this->user->fill($data);
-        $this->user->update();
-
-
-        if ($this->user->update()) {
+        if ($user->update()) {
             session()->flash('success', 'Cập nhật thành công');
             return redirect()->route('user.list');
         } else {
             session()->flash('error', 'Cập nhật thất bại');
             return redirect()->route('user.edit', ['id' => $id]);
         }
+       }
+        return view('admin.user.edit', compact(['title', 'user', 'roles']));
     }
 
     public function delete($id)

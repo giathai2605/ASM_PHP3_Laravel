@@ -37,8 +37,7 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['check.role'])->group(function(){
     // Route for user
 Route::get('/user/listTrashed', [UserController::class, 'listTrashed'])->name('user.listTrashed');
-Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
-Route::patch('/user/update/{id}', [UserController::class, 'update'])->name('user.update');
+Route::match(['get','patch'], '/user/update/{id}', [UserController::class, 'update'])->name('user.update');
 Route::post('/user/add', [UserController::class, 'addNew'])->name('user.add');
 Route::get('/user/delete/{id}', [UserController::class, 'delete'])->name('user.delete');
 Route::get('/user/restore/{id}', [UserController::class, 'restore'])->name('user.restore');

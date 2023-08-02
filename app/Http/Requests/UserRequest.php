@@ -53,7 +53,8 @@ class UserRequest extends FormRequest
                   break;
 
                 case 'register':
-                  $ruler = [ 'fullname'=>'required|min:10',
+                  $ruler = [ 
+                      'fullname'=>'required|min:10',
                       'email'=>'required|email|unique:users,email',
                       'username'=>'required|min:6|max:50|unique:users,username',
                       'password'=>'required|min:6|max:20',
@@ -74,13 +75,11 @@ class UserRequest extends FormRequest
           switch($currentAction){
             case 'update':
               // dd($this->route('id'));
-
               $ruler = [
-                  'fullname' => 'required|min:10',
+                  'fullname' => 'required|min:10|max:255',
                   'username'=>'required|min:6|max:50|unique:users,username,'. $this->route('id'),
                   'email' => 'required|email|unique:users,email,' . $this->route('id'),
                   'phone' => 'required|regex:/^[0-9]+$/|max:10|unique:users,phone,' . $this->route('id'), 
-                  'password'=>'required|min:6',
                   'gender' => 'required|numeric|max:1',
                   'birthday' => 'required|date|before:today',
                   'address' => 'required',
